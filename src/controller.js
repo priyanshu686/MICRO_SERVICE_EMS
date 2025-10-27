@@ -6,15 +6,19 @@
  */
 
 const createUser = async (prisma, model, data) => {
-  const { prev_Id, userId } = data;
+  const { prev_Id, user_Id } = data;
 
-  if (!prev_Id || !userId) {
+// Convert after destructuring
+const prevId = parseInt(prev_Id, 10);
+const userId = parseInt(user_Id, 10);
+
+  if (!prevId || !userId) {
     return { success: false, message: 'Missing required fields: prev_Id and userId are required' };
   }
 
   try {
     const checkavail = await prisma[model].findFirst({
-      where: { user_Id: prev_Id },
+      where: { user_Id: prevId },
     });
 
     if (!checkavail) {
@@ -31,7 +35,7 @@ const createUser = async (prisma, model, data) => {
 
     const create = await prisma[model].create({
       data: {
-        prev_Id,
+        prev_Id:prevId,
         user_Id: userId,
         createdAt: new Date(),
         updatedAt: new Date(),
