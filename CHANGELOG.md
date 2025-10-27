@@ -1,5 +1,11 @@
 # micro_service-ems
 
+## 1.0.2
+
+### Patch Changes
+
+- Add ParseInt
+
 ## 1.0.1
 
 ### Patch Changes

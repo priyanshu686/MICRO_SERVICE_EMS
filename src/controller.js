@@ -11,6 +11,8 @@ const createUser = async (prisma, model, data) => {
 // Convert after destructuring
 const prevId = parseInt(prev_Id, 10);
 const userId = parseInt(user_Id, 10);
+console.log('Parsed prevId:', prevId);
+console.log('Parsed userId:', userId);
 
   if (!prevId || !userId) {
     return { success: false, message: 'Missing required fields: prev_Id and userId are required' };
