@@ -1,4 +1,4 @@
-import * as CRUD from './controller'
+const CRUD = require('./controller');
 
-export default CRUD;
-export * from './controller'
+module.exports = CRUD;
+Object.assign(module.exports, CRUD);
