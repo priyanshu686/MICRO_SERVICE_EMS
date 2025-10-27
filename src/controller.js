@@ -45,14 +45,13 @@ const createUser = async (prisma, model, data) => {
     const updatePrev = await prisma[model].update({
       where: { user_Id: prevId },
       data: {
-        next_Id: {
-          push: userId,
-        },
+        next_Id: { push: userId },
         updatedAt: new Date(),
       },
     });
-    return {success:true,message:create,updatePrev};
-  }catch(err) {
+
+    return { success: true, message: create, updatePrev };
+  } catch (err) {
     console.error(err.message);
     return {
       success: false,
