@@ -1,5 +1,23 @@
 # micro_service-ems
 
+## 3.0.0
+
+### Major Changes
+
+- Added Routes in the index.js(Entry Point)
+
+## 2.0.4
+
+### Patch Changes
+
+- Error check
+
+## 2.0.2
+
+### Patch Changes
+
+- Add Changes
+
 ## 2.0.1
 
 ### Patch Changes

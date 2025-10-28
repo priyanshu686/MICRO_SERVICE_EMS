@@ -1,13 +1,26 @@
-// src/index.js
-const fs = require('fs');
-const path = require('path');
+const createUserController = require('./controller/createUser');
+const changeTeamController = require('./controller/changeteam');
+const express = require('express');
+const router = express.Router();
 
-const controllers = {};
+function setupRoutes(prisma,model) {
+  router.post('//adduser/:user_Id/:prev_Id', async (req, res) => {
+    try{
+      const result = await createUserController.createUser(prisma, model, req.params);
+      res.status(200).json(result);
+    }catch(err){
+      res.status(500).json({error: err.message });
+    }
+  }); 
+  router.post('/changeteam/:user_Id/:new_prev_Id', async (req, res) => {
+    try{
+      const result = await changeTeamController.changeTeam(prisma,model, req.params);
+      res.json(result);
+    }catch(err){
+      res.status(500).json({error: err.message });
+    }
+  } );
+  return router;
+}
 
-fs.readdirSync(path.join(__dirname, 'controller')).forEach(file => {
-  if (file.endsWith('.js')) {
-    Object.assign(controllers, require(`./controller/${file}`));
-  }
-});
-
-module.exports = controllers;
+module.exports = { setupRoutes };

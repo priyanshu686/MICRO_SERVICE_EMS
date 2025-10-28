@@ -7,8 +7,8 @@
 
 const changeTeam = async (prisma, model, data) => {
   const { user_Id, new_prev_Id } = data;
-  const userId = parseInt(user_Id, 10);
-  const newPrevId = parseInt(new_prev_Id, 10);
+  const userId = await parseInt(user_Id, 10);
+  const newPrevId = await parseInt(new_prev_Id, 10);
   if (!userId || !newPrevId) {
     return {
       success: false,
