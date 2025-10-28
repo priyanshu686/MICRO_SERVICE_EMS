@@ -1,4 +1,13 @@
-const CRUD = require('./controller');
+// src/index.js
+const fs = require('fs');
+const path = require('path');
 
-module.exports = CRUD;
-Object.assign(module.exports, CRUD);
+const controllers = {};
+
+fs.readdirSync(path.join(__dirname, 'controller')).forEach(file => {
+  if (file.endsWith('.js')) {
+    Object.assign(controllers, require(`./controller/${file}`));
+  }
+});
+
+module.exports = controllers;

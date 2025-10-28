@@ -1,5 +1,23 @@
 # micro_service-ems
 
+## 2.0.1
+
+### Patch Changes
+
+- Solving Error
+
+## 2.0.0
+
+### Major Changes
+
+- Created a Feature/Function to change the Hierarchy of Any User/Empolyee
+
+## 1.1.1
+
+### Patch Changes
+
+- Resolving the error
+
 ## 1.1.0
 
 ### Minor Changes
