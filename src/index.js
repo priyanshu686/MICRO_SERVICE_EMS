@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 function setupRoutes(prisma,model) {
-  router.post('//adduser/:user_Id/:prev_Id', async (req, res) => {
+  router.post('/adduser/:user_Id/:prev_Id', async (req, res) => {
     try{
       const result = await createUserController.createUser(prisma, model, req.params);
       res.status(200).json(result);
@@ -20,7 +20,14 @@ function setupRoutes(prisma,model) {
       res.status(500).json({error: err.message });
     }
   } );
-  return router;
+  router.get('/getall', async (req, res) => {
+    try{
+      const records = await require('./controller/getall').getall(prisma, model);
+      return router;
+    }catch(err){
+      res.status(500).json({error: err.message });
+    }
+  })
 }
 
 module.exports = { setupRoutes };
