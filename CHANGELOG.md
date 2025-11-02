@@ -1,5 +1,11 @@
 # micro_service-ems
 
+## 3.1.0
+
+### Minor Changes
+
+- Added Route and controller for get all data
+
 ## 3.0.0
 
 ### Major Changes

@@ -23,7 +23,7 @@ function setupRoutes(prisma,model) {
   router.get('/getall', async (req, res) => {
     try{
       const records = await require('./controller/getall').getall(prisma, model);
-      return router;
+      res.json(records);
     }catch(err){
       res.status(500).json({error: err.message });
     }
